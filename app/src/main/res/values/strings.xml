@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">NMedia</string>
     <string name="hello" translatable="false">NMedia!</string>
-    <string name="avatar_description">Avatar</string>
-    <string name="menu_description">Menu</string>
-    <string name="heart_description">heart</string>
-    <string name="share_description">share</string>
-    <string name="eye_description">eye</string>
+    <string name="avatar_description" translatable="false">Avatar</string>
+    <string name="menu_description" translatable="false"> Menu</string>
+    <string name="heart_description" translatable="false">heart</string>
+    <string name="share_description" translatable="false">share</string>
+    <string name="eye_description" translatable="false">eye</string>
 </resources>
