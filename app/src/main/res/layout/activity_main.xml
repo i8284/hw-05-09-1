@@ -6,6 +6,7 @@
     android:padding="@dimen/common_space"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/common_space"
     tools:context=".MainActivity">
 
     <ImageView
@@ -54,7 +55,7 @@
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/avatar"
         app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintTop_toBottomOf="@+id/author"
         android:maxLines="1"
         android:ellipsize="end" />
@@ -73,24 +74,16 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/common_space"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topBarrier" />
-
-
-    <TextView
-        android:id="@+id/link"
-        tools:text="@sample/posts.json/data/link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        android:paddingBottom="@dimen/common_space"
-        android:textColor="@color/link" />
-
+        app:layout_constraintTop_toBottomOf="@+id/topBarrier"
+        android:paddingHorizontal="8dp"
+        android:autoLink="web"
+        />
 
 
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/actionBarrier"
-        app:constraint_referenced_ids="content, link"
+        app:constraint_referenced_ids="content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
@@ -99,8 +92,8 @@
 
 
     <ImageView
-        android:id="@+id/heart"
-        app:srcCompat="@drawable/ic_heart"
+        android:id="@+id/like"
+        app:srcCompat="@drawable/baseline_favorite_border_24"
         android:contentDescription="@string/heart_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,7 +109,7 @@
         android:layout_marginStart="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/heart"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/actionBarrier"/>
 
     <ImageView
