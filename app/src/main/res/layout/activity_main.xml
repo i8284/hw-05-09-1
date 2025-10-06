@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/common_space"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/avatar"
-        tools:srcCompat="@sample/posts.json/data/authorAvatar"
+        app:srcCompat="@drawable/ic_netology_original_48dp"
         android:contentDescription="@string/avatar_description"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -100,7 +100,7 @@
         android:layout_marginTop="@dimen/common_space"
         android:layout_marginEnd="@dimen/common_space"
         app:layout_constraintTop_toBottomOf="@id/actionBarrier"
-        app:tint="?colorControlNormal"/>
+        />
 
     <TextView
         android:id="@+id/likesCount"
