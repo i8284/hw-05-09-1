@@ -7,7 +7,7 @@ import ru.netology.nmedia.dto.Post
 
 class PostRepositoryInMemoryImpl: PostRepository {
 
-    private val defaultPosts = List(2000) { counter ->
+    private val defaultPosts = List(20) { counter ->
         Post(
             counter + 1L,
             "Нетология. Университет интернет-профессий будущего",
@@ -18,6 +18,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
         )
     }
 
+    private var nextId = defaultPosts.first().id + 1
     private val data = MutableLiveData(defaultPosts)
 
     override fun get(): LiveData<List<Post>> = data
@@ -56,4 +57,30 @@ class PostRepositoryInMemoryImpl: PostRepository {
         data.value = newPosts
 
     }
+
+    override fun removeById(id: Long) {
+        data.value = data.value?.filter { it.id != id }
+    }
+
+    override fun save(post: Post) {
+        if(post.id == 0L) {
+            data.value = listOf(
+                post.copy(
+                    id=nextId++,
+                    author = "Me",
+                    published = "Now",
+
+                )
+            ) + data.value.orEmpty()
+        } else {
+            data.value = data.value?.map {
+                if (it.id == post.id) {
+                    post
+                } else {
+                    it
+                }
+            }
+        }
+    }
+
 }

@@ -6,4 +6,9 @@
     <string name="heart_description" translatable="false">heart</string>
     <string name="share_description" translatable="false">share</string>
     <string name="eye_description" translatable="false">eye</string>
+    <string name="remove">Remove</string>
+    <string name="post_content_hint">Post Content</string>
+    <string name="error_empty_content">Post content is empty</string>
+    <string name="edit">Edit</string>
+    <string name="edit_message">Edit Message</string>
 </resources>

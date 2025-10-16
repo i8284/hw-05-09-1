@@ -1,5 +1,6 @@
 package ru.netology.nmedia.adapter
 
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import formatCount
@@ -9,8 +10,7 @@ import ru.netology.nmedia.dto.Post
 
 class PostViewHolder(
     private val binding: CardPostBinding,
-    private val likeClickListener: LikeClickListener,
-    private val shareClickListener: ShareClickListener
+    private val listener: PostListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
@@ -20,6 +20,7 @@ class PostViewHolder(
             views.text = formatCount(post.viewsCount)
             shareCount.text = formatCount(post.sharesCount)
             likesCount?.text = formatCount(post.likesCount)
+
 
             like.setImageResource(
                 if (post.likedByMe) {
@@ -32,11 +33,32 @@ class PostViewHolder(
             likesCount.isVisible = (post.likesCount > 0)
 
             like?.setOnClickListener {
-                likeClickListener(post)
+                listener.onLike(post)
             }
             share?.setOnClickListener {
-                shareClickListener(post)
-                //viewModel.shareById(post.id)
+                listener.onShare(post)
+            }
+
+            menu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.post_menu)
+
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                listener.onRemove(post)
+                                true
+                            }
+                            R.id.edit -> {
+                                listener.onEdit(post)
+                                true
+                            }
+                            else -> false
+                        }
+                    }
+
+                    show()
+                }
             }
         }
     }
