@@ -59,12 +59,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.edited.observe(this) { edited ->
             if (edited.id != 0L) {
                 AndroidUtils.hideKeyboard(binding.content)
-                binding.content.setText(edited.content)
                 binding.contentEdit.text = edited.content
+                binding.content.setText(edited.content)
                 binding.editingGroup.visibility = View.VISIBLE
                 binding.editingPanel.visibility = View.VISIBLE
+                binding.cancelButton.setOnClickListener {
+                    binding.content.setText("")
+                    binding.content.clearFocus()
+                    binding.editingGroup.visibility = View.INVISIBLE
+                    binding.editingPanel.visibility = View.INVISIBLE
+                    viewModel.cancelEdit()
+                }
             }
-
         }
 
 
@@ -80,20 +86,9 @@ class MainActivity : AppCompatActivity() {
 
             binding.content.setText("")
             binding.content.clearFocus()
-            AndroidUtils.hideKeyboard(binding.content)
-
-        }
-
-
-
-        binding.cancelButton.setOnClickListener {
-            binding.content.setText("")
-            binding.content.clearFocus()
-            AndroidUtils.hideKeyboard(binding.content)
-            binding.editingGroup.visibility = View.GONE
             binding.editingGroup.visibility = View.INVISIBLE
-            binding.editingPanel.visibility = View.GONE
             binding.editingPanel.visibility = View.INVISIBLE
+            AndroidUtils.hideKeyboard(binding.content)
 
         }
 
