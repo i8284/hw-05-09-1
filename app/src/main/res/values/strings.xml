@@ -6,9 +6,9 @@
     <string name="heart_description" translatable="false">heart</string>
     <string name="share_description" translatable="false">share</string>
     <string name="eye_description" translatable="false">eye</string>
-    <string name="remove">Remove</string>
-    <string name="post_content_hint">Post Content</string>
-    <string name="error_empty_content">Post content is empty</string>
-    <string name="edit">Edit</string>
-    <string name="edit_message">Edit Message</string>
+    <string name="remove" translatable="false">Remove</string>
+    <string name="post_content_hint" translatable="false">Post Content</string>
+    <string name="error_empty_content" translatable="false">Post content is empty</string>
+    <string name="edit" translatable="false">Edit</string>
+    <string name="edit_message" translatable="false">Edit Message</string>
 </resources>

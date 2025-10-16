@@ -97,9 +97,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
-
     }
 
     private fun applyInsets(root: View) {
