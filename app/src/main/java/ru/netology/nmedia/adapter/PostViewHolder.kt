@@ -18,19 +18,10 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             views.text = formatCount(post.viewsCount)
-            shareCount.text = formatCount(post.sharesCount)
-            likesCount?.text = formatCount(post.likesCount)
-
-
-            like.setImageResource(
-                if (post.likedByMe) {
-                    R.drawable.baseline_favorite_24
-                } else {
-                    R.drawable.baseline_favorite_border_24
-                }
-            )
-
-            likesCount.isVisible = (post.likesCount > 0)
+//          likesCount.isVisible = (post.likesCount > 0)
+            like.isChecked = post.likedByMe
+            like.text = formatCount(post.likesCount)
+            share.text = formatCount(post.sharesCount)
 
             like?.setOnClickListener {
                 listener.onLike(post)
@@ -39,12 +30,12 @@ class PostViewHolder(
                 listener.onShare(post)
             }
 
-            menu.setOnClickListener {
-                PopupMenu(it.context, it).apply {
+            menu.setOnClickListener { view ->
+                val popupMenu = PopupMenu(view.context, view).apply {
                     inflate(R.menu.post_menu)
 
                     setOnMenuItemClickListener { item ->
-                        when (item.itemId) {
+                        val handled = when (item.itemId) {
                             R.id.remove -> {
                                 listener.onRemove(post)
                                 true
@@ -55,10 +46,17 @@ class PostViewHolder(
                             }
                             else -> false
                         }
+                        if (handled) binding.menu.isChecked = false
+                        handled
                     }
 
-                    show()
+                    setOnDismissListener {
+                        binding.menu.isChecked = false
+                    }
                 }
+
+                popupMenu.show()
+                binding.menu.isChecked = true
             }
         }
     }
