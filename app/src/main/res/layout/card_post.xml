@@ -99,12 +99,14 @@
         android:contentDescription="@string/heart_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:checkable="true"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/actionBarrier"
         app:icon="@drawable/ic_like_selector"
         tools:checked="true"
+        android:paddingBottom="8dp"
         />
 
 
@@ -117,10 +119,11 @@
         android:contentDescription="@string/share_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/actionBarrier"
         app:layout_constraintStart_toEndOf="@id/like"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
+        app:layout_constraintTop_toTopOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@id/like"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         />
 
 
@@ -132,22 +135,24 @@
         android:contentDescription="@string/eye_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_space"
+
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="@dimen/common_space"
-        app:layout_constraintEnd_toStartOf="@id/views"
+
         app:layout_constraintTop_toBottomOf="@id/actionBarrier"
+        app:layout_constraintEnd_toStartOf="@id/views"
+        app:layout_constraintTop_toTopOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@id/like"
         app:tint="?colorControlNormal" />
 
     <TextView
         android:id="@+id/views"
         tools:text="@sample/posts.json/data/viewsCount"
-        android:layout_marginTop="@dimen/common_space"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/common_space"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/actionBarrier"/>
+        app:layout_constraintTop_toTopOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@id/like"/>
 
 
 
