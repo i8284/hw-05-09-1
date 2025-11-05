@@ -11,4 +11,8 @@
     <string name="error_empty_content" translatable="false">Post content is empty</string>
     <string name="edit" translatable="false">Edit</string>
     <string name="edit_message" translatable="false">Edit Message</string>
+    <string name="chooser_share_post" translatable="false">Поделиться</string>
+    <string name="description_post_save" translatable="false">Save</string>
+    <string name="video_thumbnail" translatable="false">Video thumbnail</string>
+    <string name="play_video" translatable="false">Play video</string>
 </resources>

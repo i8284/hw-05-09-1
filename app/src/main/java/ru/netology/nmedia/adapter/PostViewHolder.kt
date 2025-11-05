@@ -30,6 +30,15 @@ class PostViewHolder(
                 listener.onShare(post)
             }
 
+            videoGroup.isVisible = !post.video.isNullOrBlank()
+
+            videoContainer.setOnClickListener {
+                listener.onVideo(post)
+            }
+            videoPlay.setOnClickListener {
+                listener.onVideo(post)
+            }
+
             menu.setOnClickListener { view ->
                 val popupMenu = PopupMenu(view.context, view).apply {
                     inflate(R.menu.post_menu)
