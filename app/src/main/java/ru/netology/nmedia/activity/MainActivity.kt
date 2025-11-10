@@ -33,12 +33,21 @@ class MainActivity : AppCompatActivity() {
         applyInsets(binding.root)
 
         val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
-            result ?: return@registerForActivityResult
+            if (result == null) {
+                viewModel.cancelEdit()
+                return@registerForActivityResult
+            }
+            //result ?: return@registerForActivityResult
+
             viewModel.save(result)
         }
 
         val editPostLauncher = registerForActivityResult(EditPostContract()) { result ->
-            result ?: return@registerForActivityResult
+            //result ?: return@registerForActivityResult
+            if (result == null) {
+                viewModel.cancelEdit()
+                return@registerForActivityResult
+            }
             viewModel.save(result)
         }
 

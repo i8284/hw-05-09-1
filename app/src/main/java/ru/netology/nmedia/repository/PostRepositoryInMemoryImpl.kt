@@ -19,7 +19,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
         )
     }
 
-    private var nextId = defaultPosts.first().id + 1
+    //private var nextId = defaultPosts.first().id + 1
+    private var nextId = 21L
     private val data = MutableLiveData(defaultPosts)
 
     override fun get(): LiveData<List<Post>> = data
